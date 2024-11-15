@@ -6,21 +6,28 @@
     <title>Document</title>
     <script defer src="script.js" type="module"></script>
     <script defer src="alphabet.js" type="module"></script>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="titre">
+    <div class="main">
+        <div class="titre">
         <h1>Traduction Morse</h1>
         <p class="chapeau">merci de séparer le morse avec un espace pour chaque lettre et un slash pour chaque mot.</p>
-    </div>
-    <div class="encode">
-        <input type="text" class="input-latin"/>
-        <button class="button-encode">Valider</button>
-        <p class="output-morse">nothing</p>
-    </div>
-    <div class="decode">
-        <input type="text" class="input-morse"/>
-        <button class="button-decode">Valider</button>
-        <p class="output-latin">-. --- - .... .. -. --.</p>
+        </div>
+        
+        <div class="cipher-container">
+            <div class="encode">
+            <h1>Latin</h1>
+            <textarea class="input-latin" cols="50" rows="35">Hello World</textarea>
+            <button class="button-encode">Valider</button>
+            </div>
+            
+            <div class="decode">
+            <h1>Morse</h1>
+            <textarea class="input-morse" cols="50" rows="35">.... . .-.. .-.. --- / .-- --- .-. .-.. -.. </textarea>
+            <button class="button-decode">Valider</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

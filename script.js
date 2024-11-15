@@ -4,9 +4,7 @@ import {latinToMorse, morseToLatin} from "./alphabet.js"
 const buttonDecode = document.querySelector('.button-decode')
 const buttonEncode = document.querySelector('.button-encode')
 const latinInput = document.querySelector('.input-latin')
-const latinOutput = document.querySelector('.output-latin')
 const morseInput = document.querySelector('.input-morse')
-const morseOutput = document.querySelector('.output-morse')
 //-----------------------
 
 function getLatinCharacterList(myString){
@@ -32,10 +30,8 @@ function encode(myString){
         if (encodedCharacter === " "){
             encodedCharacter = "/"
         }
-        console.log(encodedCharacter)
         encodedText += encodedCharacter + " "
-    } 
-    console.log(encodedText)
+    }
     return encodedText
 }
 
@@ -51,6 +47,7 @@ function translateMorseCharacter(character){
             myCharacter = morseToLatin[morseLetter]
         }
     }
+    myCharacter = myCharacter.toLowerCase()
     return myCharacter
 }
 
@@ -58,20 +55,21 @@ function decode(myString){
     const myText = getMorseCharacterList(myString)
     let decodedText = ""
     for (let i = 0; i < myText.length; i++){
-        const decodedCharacter = translateMorseCharacter(myText[i])
-        console.log(decodedCharacter)
-        decodedText += decodedCharacter + " "
+        let decodedCharacter = translateMorseCharacter(myText[i])
+        if (decodedCharacter === "/"){
+            decodedCharacter = " "
+        }
+        decodedText += decodedCharacter
     }
-    console.log(decodedText)
     return decodedText
 }
 
 buttonEncode.addEventListener('click', ()=>{
     const text = encode(latinInput.value)
-    morseOutput.innerText = text
+    morseInput.value = text
 })
 
 buttonDecode.addEventListener('click', ()=>{
     const text = decode(morseInput.value)
-    latinOutput.innerText = text
+    latinInput.value = text
 })

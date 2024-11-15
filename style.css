@@ -1,0 +1,67 @@
+* {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vh;
+}
+
+.titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+    width: 100%;
+    background-color: steelblue;
+    color: white;
+    padding-bottom: 2px;
+    font-size: larger;
+}
+
+.cipher-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    height: 50vh;
+    color: steelblue;
+    font-size: large;
+}
+
+.encode{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 10px;
+}
+
+.decode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 10px;
+}
+
+button {
+    height: 30px;
+    width: 70px;
+    background-color: white;
+    border: solid steelblue;
+    border-radius: 5%;
+}
+
+textarea {
+    border: solid steelblue;
+}
