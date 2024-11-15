@@ -1,3 +1,14 @@
+import {latinToMorse, morseToLatin} from "./alphabet.js"
+
+//----------DOM----------
+const buttonDecode = document.querySelector('.button-decode')
+const buttonEncode = document.querySelector('.button-encode')
+const latinInput = document.querySelector('.input-latin')
+const latinOutput = document.querySelector('.output-latin')
+const morseInput = document.querySelector('.input-morse')
+const morseOutput = document.querySelector('.output-morse')
+//-----------------------
+
 function getLatinCharacterList(myString){
     const myArray = myString.split('')
     return myArray
@@ -15,14 +26,18 @@ function translateLatinCharacter(character){
 
 function encode(myString){
     const myText = getLatinCharacterList(myString)
-    for(let i = 0; i < myText.length; i++){
-        const encodedCharacter = translateLatinCharacter(myText[i])
+    let encodedText = ""
+    for (let i = 0; i < myText.length; i++){
+        let encodedCharacter = translateLatinCharacter(myText[i])
+        if (encodedCharacter === " "){
+            encodedCharacter = "/"
+        }
         console.log(encodedCharacter)
-    }
+        encodedText += encodedCharacter + " "
+    } 
+    console.log(encodedText)
+    return encodedText
 }
-
-
-
 
 function getMorseCharacterList(myString){
     const myArray = myString.split(' ')
@@ -41,71 +56,22 @@ function translateMorseCharacter(character){
 
 function decode(myString){
     const myText = getMorseCharacterList(myString)
-    for(let i = 0; i < myText.length; i++){
+    let decodedText = ""
+    for (let i = 0; i < myText.length; i++){
         const decodedCharacter = translateMorseCharacter(myText[i])
         console.log(decodedCharacter)
+        decodedText += decodedCharacter + " "
     }
+    console.log(decodedText)
+    return decodedText
 }
 
+buttonEncode.addEventListener('click', ()=>{
+    const text = encode(latinInput.value)
+    morseOutput.innerText = text
+})
 
-const morseToLatin = {
-    '-': "T",
-    '--': "M",
-    '---': "O",
-    '--.': "G",
-    '--.-': "Q",
-    '--..': "Z",
-    '-.': "N",
-    '-.-': "K",
-    '-.--': "Y",
-    '-.-.': "C",
-    '-..': "D",
-    '-..-': "X",
-    '-...': "B",
-    '.': "E",
-    '.-': "A",
-    '.--': "W",
-    '.---': "J",
-    '.--.': "P",
-    '.-.': "R",
-    '.-..': "L",
-    '..': "I",
-    '..-': "U",
-    '..-.': "F",
-    '...': "S",
-    '...-': "V",
-    '....': "H"
-  }
-
-  const latinToMorse = {
-	'A':'.-',
-	'B':'-...',
-	'C':'-.-.',
-	'D':'-..',
-	'E':'.',
-	'F':'..-.',
-	'G':'--.',
-	'H':'....',
-	'I':'..',
-	'J':'.---',
-	'K':'-.-',
-	'L':'.-..',
-	'M':'--',
-	'N':'-.',
-	'O':'---',
-	'P':'.--.',
-	'Q':'--.-',
-	'R':'.-.',
-	'S':'...',
-	'T':'-',
-	'U':'..-',
-	'V':'...-',
-	'W':'.--',
-	'X':'-..-',
-	'Y':'-.--',
-	'Z':'--..'
-}
-
-encode('Eloi est sympa')
-
-decode('. .-.. --- .. / . ... - / ... -.-- -- .--. .-')
+buttonDecode.addEventListener('click', ()=>{
+    const text = decode(morseInput.value)
+    latinOutput.innerText = text
+})
