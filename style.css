@@ -30,7 +30,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100vh;
+    width: 90%;
     height: 50vh;
     color: steelblue;
     font-size: large;
@@ -64,4 +64,15 @@ button {
 
 textarea {
     border: solid steelblue;
+}
+
+.img-morse-left {
+    height: 420px;
+    width: 210px;
+}
+
+.img-morse-right {
+    height: 420px;
+    width: 210px;
+    order: 1;
 }
